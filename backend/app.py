@@ -2,12 +2,14 @@ from flask import Flask
 from flask_socketio import SocketIO
 from flask_cors import CORS
 from routes.bin_routes import bin_routes
+from routes.vehicle_routes import vehicle_routes
 
 app=Flask(__name__)
 CORS(app)
 socketIo=SocketIO(app)
 
 app.register_blueprint(bin_routes, url_prefix='/api')
+app.register_blueprint(vehicle_routes, url_prefix='/api')
 
 @app.route('/')
 def home():

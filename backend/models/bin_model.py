@@ -46,7 +46,6 @@ class Bin:
             return {"message": "No bins found for this city."}
         
         return bins_in_city
-        # return list(bins_collection.find({"city_id": city_id}, {'_id':0}))
     
     @staticmethod
     def update_bin(bin_id, new_data):
