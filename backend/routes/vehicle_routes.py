@@ -25,6 +25,7 @@ def add_vehicle():
     if not all(field in data for field in required_fields):
         return jsonify({"error": "Missing required fields"}), 400
     new_vehicle = Vehicle(
+        city_id=data.get("city_id"),
         vehicle_license=data["vehicle_license"],
         load_capacity=data["load_capacity"],
         latitude=data["latitude"],

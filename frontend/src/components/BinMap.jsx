@@ -45,11 +45,11 @@ const MapCenterer = ({ center }) => {
   return null;
 };
 
-function BinMap({ center, bins, mapRef, onMapClickForStart }) {
+function BinMap({ center, bins, mapRef, onMapClickForStart, startLocation }) {
   const [startLocationMarker, setStartLocationMarker] = useState(null);
   console.log("City center received: " + center);
   console.log("Start location marker received: ", startLocationMarker);
-
+  startLocation(startLocationMarker);
   return (
     <div style={{ height: "500px", width: "100%" }}>
       <MapContainer

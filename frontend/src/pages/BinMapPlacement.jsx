@@ -1,17 +1,18 @@
-// src/pages/BinPlacement.jsx
-
 import { useState, useRef } from "react";
 import BinMap from "../components/BinMap";
 import BinControlPanel from "../components/BinControlPanel";
-import BinCards from "../components/binCard";
 import axios from "axios";
 import VehicleControlPanel from "../components/VehicleControlPanel";
 import Dashboard from "../components/Dashboard";
+import { sendOptimizationSetup } from "../utils/api";
 
 const BinPlacement = () => {
   const [startLocationCallback, setStartLocationCallback] = useState(null);
   const [vehicles, setVehicles] = useState([]);
-
+  const [startLocation, setStartLocation] = useState(null);
+  const [bins, setBins] = useState([]);
+  const [cityCenter, setCityCenter] = useState([28.6139, 77.209]); // Default: Delhi
+  const mapRef = useRef();
   const handleSetStartLocation = (callback) => {
     setStartLocationCallback(() => callback);
   };
@@ -22,9 +23,6 @@ const BinPlacement = () => {
       setStartLocationCallback(null);
     }
   };
-  const [bins, setBins] = useState([]);
-  const [cityCenter, setCityCenter] = useState([28.6139, 77.209]); // Default: Delhi
-  const mapRef = useRef();
 
   const handleSearchCity = async (cityName) => {
     try {
@@ -39,7 +37,7 @@ const BinPlacement = () => {
         }
       );
       console.log("Search response for", cityName, res.data);
-      
+
       if (res.data.length > 0) {
         const { lat, lon } = res.data[0];
         const newCenter = [parseFloat(lat), parseFloat(lon)];
@@ -68,6 +66,7 @@ const BinPlacement = () => {
     };
 
     const newBins = Array.from({ length: num }, (_, i) => ({
+      city_id: cityCenter,
       id: bins.length + i + 1,
       lat: parseFloat(
         (
@@ -93,7 +92,17 @@ const BinPlacement = () => {
     );
     setBins(updated);
   };
+  const handleSimulationClick = async () => {
+    try {
+      const response = await sendOptimizationSetup({ bins, vehicles, startLocation });
+      console.log("Server response:", response);
+    } catch (error) {
+      console.error("Optimization setup failed:", error);
+    }
+  };
   console.log("Vehicles Added: ", vehicles);
+  console.log("Bins added: ", bins);
+  console.log("Start Location in Bin Placement: ", startLocation);
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold text-center mb-6">Smart Bin System</h1>
@@ -111,13 +120,19 @@ const BinPlacement = () => {
         center={cityCenter}
         bins={bins}
         mapRef={mapRef}
+        startLocation={setStartLocation}
         onMapClickForStart={handleMapClick}
       />
-
-      {/* {bins.length > 0 && (
-        <BinCards bins={bins} updateBinFill={updateBinFill} />
-      )} */}
-      <Dashboard bins={bins} updateBinFill={updateBinFill} vehicles={vehicles} />
+      <Dashboard
+        bins={bins}
+        updateBinFill={updateBinFill}
+        vehicles={vehicles}
+      />
+      <div className="simulation-button-container mt-4 h-20 flex justify-center">
+        <button onClick={handleSimulationClick} className="w-fit pr-4 pl-4 h-12 text-white font-semibold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg shadow-lg hover:scale-105 duration-200 hover:drop-shadow-2xl hover:shadow-[#7dd3fc] hover:cursor-pointer">
+          Start Simulation
+        </button>
+      </div>
     </div>
   );
 };

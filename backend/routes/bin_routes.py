@@ -19,7 +19,7 @@ def get_bins_by_city(city_id):
 @bin_routes.route('/bins', methods=['POST'])
 def add_bin():
     data = request.get_json()
-    new_bin = Bin(data['city_id'], data['latitude'], data['longitude'], data['capacity'], data['fill_percentage'])
+    new_bin = Bin(data['bin_id'], data['city_id'], data['latitude'], data['longitude'], data['capacity'], data['fill_percentage'])
     new_bin.save()
     return jsonify({"message": "Bin added successfully"}), 201
 

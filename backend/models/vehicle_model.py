@@ -3,7 +3,8 @@ from bson.objectid import ObjectId
 
 #& Vehicle Model
 class Vehicle:
-    def __init__(self, vehicle_license, load_capacity, latitude, longitude, current_load=0, assigned_bins=None, status="available"):
+    def __init__(self, city_id, vehicle_license, load_capacity, latitude, longitude, current_load=0, assigned_bins=None, status="available"):
+        self.city_id = city_id
         self.vehicle_license = vehicle_license
         self.load_capacity = load_capacity
         self.current_load = current_load

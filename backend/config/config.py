@@ -11,7 +11,7 @@ if not MONGO_URI:
     print('Error: MONGO_URI environment variable not found.')
     exit(1)
 else:
-    print('MONGO_URI environment variable found.', MONGO_URI)
+    print('MONGO_URI environment variable found.')
 
 # Create a MongoClient object
 client = MongoClient(MONGO_URI)

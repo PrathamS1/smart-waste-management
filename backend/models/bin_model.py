@@ -3,7 +3,8 @@ from bson.objectid import ObjectId
 
 #& Bin Model
 class Bin:
-    def __init__(self, city_id, latitude, longitude , capacity, fill_percentage):
+    def __init__(self, bin_id, city_id, latitude, longitude, fill_percentage, capacity=100):
+        self.bin_id = bin_id
         self.city_id = city_id
         self.latitude = latitude
         self.longitude = longitude
