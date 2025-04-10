@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from models.bin_model import Bin
 from models.vehicle_model import Vehicle
-from utils.graph_building import build_distance_graph, compute_multi_vehicle_route
+from utils.graph_building import compute_multi_vehicle_route
 import heapq
 
 optimization_routes = Blueprint('optimization_routes', __name__)
