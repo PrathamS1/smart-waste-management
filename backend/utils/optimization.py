@@ -3,6 +3,7 @@ from models.bin_model import Bin
 from models.vehicle_model import Vehicle
 from utils.graph_building import compute_multi_vehicle_route
 import heapq
+from config.config import db
 
 optimization_routes = Blueprint('optimization_routes', __name__)
 test_routes = Blueprint("test_routes", __name__)
@@ -14,7 +15,12 @@ def setup_optimization():
     bins = data.get('bins', [])
     vehicles = data.get('vehicles', [])
     start_location = data.get('start_location', {})
+    print("Start Location:", start_location)
+    print("Bins:", bins)
+    print("Vehicles:", vehicles)
 
+    db.bins.delete_many({})
+    db.vehicles.delete_many({})
     # Save Bins
     for bin_data in bins:
         new_bin = Bin(

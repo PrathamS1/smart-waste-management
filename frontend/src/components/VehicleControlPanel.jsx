@@ -37,45 +37,70 @@ const VehicleControlPanel = ({ onSetStartLocation, onAddVehicles }) => {
   };
 
   return (
-    <div className="p-4 bg-white shadow rounded mb-4 w-full h-full flex justify-center items-center">
-      <div className="flex flex-col gap-4 items-center p-16 shadow-2xl rounded-lg">
-        <input
-          type="number"
-          min="1"
-          value={vehicleCount}
-          onChange={(e) => setVehicleCount(Number(e.target.value))}
-          className="border px-3 py-2 rounded"
-          placeholder="Number of Vehicles"
-        />
-        <input
-          type="text"
-          value={capacities}
-          onChange={(e) => setCapacities(e.target.value)}
-          className="border px-3 py-2 rounded"
-          placeholder="Capacities (comma-separated)"
-        />
-        <button
-          onClick={handleStartLocationClick}
-          className={`px-4 py-2 font-[Poppins] rounded ${
-            isSettingStart ? "bg-yellow-500" : "bg-teal-600 text-white"
-          }`}
-        >
-          {isSettingStart ? "Click on Map..." : "Set Start Location"}
-        </button>
-        {startLocation && (
-          <p className="font-[Lora] text-sm mt-2 text-gray-600">
-            Start Location: {startLocation.lat}, {startLocation.lng}
-          </p>
-        )}
-        <button
-          onClick={handleAdd}
-          className="font-[Poppins] bg-teal-700 text-white px-4 py-2 rounded shadow hover:bg-teal-800"
-        >
-          Add Vehicles
-        </button>
-        {error && (
-          <p className="font-[Lora] text-red-500 text-sm mt-2">{error}</p>
-        )}
+    <div className="p-6">
+      <div className="bg-gray-700/50 rounded-lg p-6 space-y-6">
+        <div className="space-y-4">
+          <div>
+            <label htmlFor="vehicleCount" className="block text-sm font-medium text-gray-300 mb-2">
+              Number of Vehicles
+            </label>
+            <input
+              type="number"
+              id="vehicleCount"
+              min="1"
+              value={vehicleCount}
+              onChange={(e) => setVehicleCount(Number(e.target.value))}
+              className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-gray-100 placeholder-gray-400 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 transition-all duration-200"
+              placeholder="Enter number of vehicles"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="capacities" className="block text-sm font-medium text-gray-300 mb-2">
+              Vehicle Capacities (comma-separated)
+            </label>
+            <input
+              type="text"
+              id="capacities"
+              value={capacities}
+              onChange={(e) => setCapacities(e.target.value)}
+              className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-gray-100 placeholder-gray-400 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 transition-all duration-200"
+              placeholder="e.g., 1000, 1500, 2000"
+            />
+          </div>
+
+          <button
+            onClick={handleStartLocationClick}
+            className={`w-full px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${
+              isSettingStart
+                ? "bg-yellow-500 text-gray-900 shadow-lg shadow-yellow-500/30"
+                : "bg-gray-700 text-gray-300 hover:bg-gray-600 border border-gray-600"
+            }`}
+          >
+            {isSettingStart ? "Click on Map..." : "Set Start Location"}
+          </button>
+
+          {startLocation && (
+            <div className="p-3 bg-gray-600/50 rounded-lg">
+              <p className="text-sm text-gray-300">
+                Start Location: {startLocation.lat.toFixed(6)}, {startLocation.lng.toFixed(6)}
+              </p>
+            </div>
+          )}
+
+          <button
+            onClick={handleAdd}
+            className="w-full px-6 py-3 bg-gradient-to-r from-teal-500 to-emerald-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-teal-500/30 transition-all duration-200 hover:scale-105"
+          >
+            Add Vehicles
+          </button>
+
+          {error && (
+            <div className="p-3 bg-red-500/20 border border-red-500/50 rounded-lg">
+              <p className="text-sm text-red-400">{error}</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

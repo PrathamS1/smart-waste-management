@@ -19,67 +19,71 @@ const BinControlPanel = ({ onAddBins, onSearchCity }) => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="p-4 bg-white shadow rounded mb-4 w-[100%] h-[100%]"
-    >
-      <div className="flex flex-col items-center gap-4">
+    <div className="p-6">
+      <form onSubmit={handleSubmit} className="space-y-6">
+        {/* City Search */}
         <div className="relative">
           <input
             type="text"
             value={city}
             onChange={(e) => setCity(e.target.value)}
             placeholder="Enter City Name"
-            className="input shadow-lg focus:border-2 border-gray-300 px-5 py-3 rounded-xl w-80 transition-all focus:w-74 outline-none"
+            className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-gray-100 placeholder-gray-400 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 transition-all duration-200"
           />
-          <button type="submit">
+          <button 
+            type="submit"
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-teal-400 transition-colors duration-200"
+          >
             <svg
-              class="size-6 absolute top-3 right-3 text-gray-500"
+              className="w-6 h-6"
               stroke="currentColor"
-              stroke-width="1.5"
+              strokeWidth="1.5"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-                stroke-linejoin="round"
-                stroke-linecap="round"
-              ></path>
+                strokeLinejoin="round"
+                strokeLinecap="round"
+              />
             </svg>
           </button>
         </div>
 
-        <div className="flex flex-col gap-4 items-center justify-center p-4 shadow-2xl h-56 rounded-b-lg">
-          <div className="flex gap-4 items-center">
-            <input
-              type="number"
-              min="1"
-              value={count}
-              onChange={(e) => setCount(Number(e.target.value))}
-              className="border rounded px-3 py-2"
-              placeholder="Number of Bins"
-            />
-            <select
-              value={fillMode}
-              onChange={(e) => setFillMode(e.target.value)}
-              className="border rounded px-3 py-2"
-            >
-              <option value="auto">Auto Fill</option>
-              <option value="manual">Manual Fill</option>
-            </select>
+        {/* Bin Controls */}
+        <div className="bg-gray-700/50 rounded-lg p-6 space-y-6">
+          <div className="space-y-4">
+            <div className="flex gap-4">
+              <input
+                type="number"
+                min="1"
+                value={count}
+                onChange={(e) => setCount(Number(e.target.value))}
+                className="flex-1 px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-gray-100 placeholder-gray-400 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 transition-all duration-200"
+                placeholder="Number of Bins"
+              />
+              <select
+                value={fillMode}
+                onChange={(e) => setFillMode(e.target.value)}
+                className="flex-1 px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-gray-100 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 transition-all duration-200"
+              >
+                <option value="auto" className="bg-gray-700">Auto Fill</option>
+                <option value="manual" className="bg-gray-700">Manual Fill</option>
+              </select>
+            </div>
           </div>
 
           <button
             type="button"
             onClick={handleAdd}
-            className="bg-teal-600 text-white px-4 py-2 rounded shadow hover:bg-teal-700"
+            className="w-full px-6 py-3 bg-gradient-to-r from-teal-500 to-emerald-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-teal-500/30 transition-all duration-200 hover:scale-105"
           >
             Add Bins
           </button>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 };
 
