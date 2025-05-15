@@ -11,7 +11,9 @@ const BinPlacement = () => {
   const [vehicles, setVehicles] = useState([]);
   const [startLocation, setStartLocation] = useState(null);
   const [bins, setBins] = useState([]);
-  const [cityCenter, setCityCenter] = useState([28.6139, 77.209]); // Default: Delhi
+  const [cityCenter, setCityCenter] = useState([28.6139, 77.209]);
+  const [activePanel, setActivePanel] = useState("bins");
+
   const mapRef = useRef();
   const handleSetStartLocation = (callback) => {
     setStartLocationCallback(() => callback);
@@ -23,7 +25,6 @@ const BinPlacement = () => {
       setStartLocationCallback(null);
     }
   };
-
   const handleSearchCity = async (cityName) => {
     try {
       const res = await axios.get(
@@ -94,7 +95,11 @@ const BinPlacement = () => {
   };
   const handleSimulationClick = async () => {
     try {
-      const response = await sendOptimizationSetup({ bins, vehicles, startLocation });
+      const response = await sendOptimizationSetup({
+        bins,
+        vehicles,
+        startLocation,
+      });
       console.log("Server response:", response);
     } catch (error) {
       console.error("Optimization setup failed:", error);
@@ -105,31 +110,64 @@ const BinPlacement = () => {
   console.log("Start Location in Bin Placement: ", startLocation);
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold text-center mb-6">Smart Bin System</h1>
+      <div className="flex flex-row justify-between mb-4 w-full">
+        <div className="w-[60%]">
+          <BinMap
+            center={cityCenter}
+            bins={bins}
+            mapRef={mapRef}
+            startLocation={setStartLocation}
+            onMapClickForStart={handleMapClick}
+          />
+        </div>
+        <div className="w-[40%] flex flex-col justify-between items-center">
+          <div className="flex gap-3 mt-2 mb-2">
+            <button
+              onClick={() => setActivePanel("bins")}
+              className={`hover:cursor-pointer text-[1.5rem] font-[Poppins] rounded-md px-4 shadow-lg ${
+                activePanel === "bins"
+                  ? "bg-teal-500 text-white"
+                  : "bg-gray-200"
+              }`}
+            >
+              Bins
+            </button>
+            <button
+              onClick={() => setActivePanel("vehicles")}
+              className={`hover:cursor-pointer text-[1.5rem] font-[Poppins] rounded-md px-4 shadow-lg ${
+                activePanel === "vehicles"
+                  ? "bg-teal-500 text-white"
+                  : "bg-gray-200"
+              }`}
+            >
+              Vehicles
+            </button>
+          </div>
 
-      <BinControlPanel
-        onAddBins={handleAddBins}
-        onSearchCity={handleSearchCity}
-      />
-      <VehicleControlPanel
-        onSetStartLocation={handleSetStartLocation}
-        onAddVehicles={(vehicles) => setVehicles(vehicles)}
-      />
-
-      <BinMap
-        center={cityCenter}
-        bins={bins}
-        mapRef={mapRef}
-        startLocation={setStartLocation}
-        onMapClickForStart={handleMapClick}
-      />
+          {activePanel === "bins" && (
+            <BinControlPanel
+              onAddBins={handleAddBins}
+              onSearchCity={handleSearchCity}
+            />
+          )}
+          {activePanel === "vehicles" && (
+            <VehicleControlPanel
+              onSetStartLocation={handleSetStartLocation}
+              onAddVehicles={(vehicles) => setVehicles(vehicles)}
+            />
+          )}
+        </div>
+      </div>
       <Dashboard
         bins={bins}
         updateBinFill={updateBinFill}
         vehicles={vehicles}
       />
       <div className="simulation-button-container mt-4 h-20 flex justify-center">
-        <button onClick={handleSimulationClick} className="w-fit pr-4 pl-4 h-12 text-white font-semibold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg shadow-lg hover:scale-105 duration-200 hover:drop-shadow-2xl hover:shadow-[#7dd3fc] hover:cursor-pointer">
+        <button
+          onClick={handleSimulationClick}
+          className="w-fit pr-4 pl-4 h-12 text-white font-semibold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg shadow-lg hover:scale-105 duration-200 hover:drop-shadow-2xl hover:shadow-[#7dd3fc] hover:cursor-pointer"
+        >
           Start Simulation
         </button>
       </div>

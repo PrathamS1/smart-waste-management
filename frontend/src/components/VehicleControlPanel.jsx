@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 const VehicleControlPanel = ({ onSetStartLocation, onAddVehicles }) => {
   const [vehicleCount, setVehicleCount] = useState(1);
-  const [capacities, setCapacities] = useState('');
+  const [capacities, setCapacities] = useState("");
   const [isSettingStart, setIsSettingStart] = useState(false);
   const [startLocation, setStartLocation] = useState(null);
+  const [error, setError] = useState(null);
 
   const handleStartLocationClick = () => {
     setIsSettingStart(true);
@@ -15,29 +16,29 @@ const VehicleControlPanel = ({ onSetStartLocation, onAddVehicles }) => {
   };
 
   const handleAdd = () => {
-    const parsedCaps = capacities.split(',').map(Number);
+    const parsedCaps = capacities.split(",").map(Number);
     if (parsedCaps.length !== vehicleCount) {
-      alert("Number of capacities must match vehicle count.");
+      setError("Number of capacities must match vehicle count.");
       return;
     }
 
     if (!startLocation) {
-      alert("Please set a start location on the map.");
+      setError("Please set a start location on the map.");
       return;
     }
 
     const vehicles = Array.from({ length: vehicleCount }, (_, i) => ({
       id: i + 1,
       capacity: parsedCaps[i],
-      startLocation
+      startLocation,
     }));
 
     onAddVehicles(vehicles);
   };
 
   return (
-    <div className="p-4 bg-white shadow rounded mb-4">
-      <div className="flex flex-col md:flex-row gap-4 items-center">
+    <div className="p-4 bg-white shadow rounded mb-4 w-full h-full flex justify-center items-center">
+      <div className="flex flex-col gap-4 items-center p-16 shadow-2xl rounded-lg">
         <input
           type="number"
           min="1"
@@ -55,24 +56,27 @@ const VehicleControlPanel = ({ onSetStartLocation, onAddVehicles }) => {
         />
         <button
           onClick={handleStartLocationClick}
-          className={`px-4 py-2 rounded ${
-            isSettingStart ? 'bg-yellow-500' : 'bg-teal-600 text-white'
+          className={`px-4 py-2 font-[Poppins] rounded ${
+            isSettingStart ? "bg-yellow-500" : "bg-teal-600 text-white"
           }`}
         >
           {isSettingStart ? "Click on Map..." : "Set Start Location"}
         </button>
+        {startLocation && (
+          <p className="font-[Lora] text-sm mt-2 text-gray-600">
+            Start Location: {startLocation.lat}, {startLocation.lng}
+          </p>
+        )}
         <button
           onClick={handleAdd}
-          className="bg-teal-700 text-white px-4 py-2 rounded shadow hover:bg-teal-800"
+          className="font-[Poppins] bg-teal-700 text-white px-4 py-2 rounded shadow hover:bg-teal-800"
         >
           Add Vehicles
         </button>
+        {error && (
+          <p className="font-[Lora] text-red-500 text-sm mt-2">{error}</p>
+        )}
       </div>
-      {startLocation && (
-        <p className="text-sm mt-2 text-gray-600">
-          Start Location: {startLocation.lat}, {startLocation.lng}
-        </p>
-      )}
     </div>
   );
 };

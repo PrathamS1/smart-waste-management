@@ -4,12 +4,14 @@ from flask_cors import CORS
 from routes.bin_routes import bin_routes
 from routes.vehicle_routes import vehicle_routes
 from utils.optimization import optimization_routes, test_routes
+import eventlet
+eventlet.monkey_patch()
 
 app=Flask(__name__)
 # CORS(app)
 # socketIo=SocketIO(app)
 CORS(app, resources={r"/*": {"origins": "http://localhost:4000"}}, supports_credentials=True)
-socketIo = SocketIO(app, cors_allowed_origins="http://localhost:4000")
+socketIo = SocketIO(app, cors_allowed_origins="http://localhost:4000", async_mode="eventlet")
 
 app.register_blueprint(bin_routes, url_prefix='/api')
 app.register_blueprint(vehicle_routes, url_prefix='/api')
