@@ -2,7 +2,8 @@
 
 A modern web application for optimizing waste collection routes using real-time bin fill levels and vehicle capacity constraints.
 
-![Smart Waste Management System](./public/homescreen.jpeg)
+![Smart Waste Management System](frontend/public/homescreen.jpeg)
+
 
 ## 🌟 Features
 
