@@ -2,7 +2,7 @@
 
 A modern web application for optimizing waste collection routes using real-time bin fill levels and vehicle capacity constraints.
 
-![Smart Waste Management System](./public/homescreen.jpeg)
+![Smart Waste Management System](frontend/public/homescreen.jpeg)
 
 ## 🌟 Features
 
@@ -74,7 +74,7 @@ A modern web application for optimizing waste collection routes using real-time 
 5. Click "Add Vehicles" to register them
 
 ### Running Simulation
-1. Click "Add Data" to send current setup to the backend
+1. Click "Add Data" to send the current setup to the backend
 2. Click "Run Simulation" to generate optimized routes
 3. View the generated routes on the map
 4. Check route details in the Route Details panel
@@ -82,12 +82,12 @@ A modern web application for optimizing waste collection routes using real-time 
 ## 🔧 System Limitations
 
 ### Map Interaction
-- Refrain from tapping on the map as it will add unnecessary markers
+- Refrain from tapping on the map, as it will add unnecessary markers
 - Map markers cannot be dragged after placement
 - Limited to one start location per simulation
 
 ### Bin Management
-- The number of bins affects simulation performance as it will take more time to run simulation
+- The number of bins affects simulation performance as it will take more time to run the simulation
 - Bin fill level must be between 0-100%
 - Bins cannot be deleted once added
 
