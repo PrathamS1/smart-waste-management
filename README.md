@@ -2,8 +2,7 @@
 
 A modern web application for optimizing waste collection routes using real-time bin fill levels and vehicle capacity constraints.
 
-![Smart Waste Management System](frontend/public/homescreen.jpeg)
-
+![Smart Waste Management System](./public/homescreen.jpeg)
 
 ## 🌟 Features
 
@@ -88,7 +87,7 @@ A modern web application for optimizing waste collection routes using real-time 
 - Limited to one start location per simulation
 
 ### Bin Management
-- The number of bins affects simulation performance
+- The number of bins affects simulation performance as it will take more time to run simulation
 - Bin fill level must be between 0-100%
 - Bins cannot be deleted once added
 
@@ -143,7 +142,7 @@ A modern web application for optimizing waste collection routes using real-time 
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
 
 ## 👥 Authors
 
