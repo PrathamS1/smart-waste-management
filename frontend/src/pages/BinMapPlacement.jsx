@@ -5,6 +5,7 @@ import axios from "axios";
 import VehicleControlPanel from "../components/VehicleControlPanel";
 import Dashboard from "../components/Dashboard";
 import RouteDetails from "../components/RouteDetails";
+import LimitationsModal from "../components/LimitationsModal";
 import { fetchOptimizedRoute, sendOptimizationSetup, fetchBinById } from "../utils/api";
 import toast, { Toaster } from 'react-hot-toast';
 
@@ -298,6 +299,7 @@ const BinPlacement = () => {
           </button>
         </div>
       </div>
+      <LimitationsModal />
     </div>
   );
 };
