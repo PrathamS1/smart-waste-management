@@ -1,5 +1,0 @@
-from backend.database import create_tables
-
-print("📌 Creating tables...")
-create_tables()
-print("✅ Tables Created Successfully!")
