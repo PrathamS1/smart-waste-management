@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 
 const LimitationsModal = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -67,12 +68,11 @@ const LimitationsModal = () => {
       {isExpanded && (
         <div className="absolute bottom-16 right-0 w-80 bg-gray-800 rounded-lg shadow-xl border border-gray-700 overflow-hidden">
           <div className="p-4 border-b border-gray-700 bg-red-100 flex flex-col items-center">
-            <a
-              href="/how-it-works"
+            <Link to="/how-it-works"
               className="bg-red-500 hover:bg-red-600 text-white font-semibold px-4 py-2 rounded shadow transition-colors text-center w-full"
             >
               Server is not deployed so the simulation will not work,<br/>see <span className="underline">How it works</span> to gain insight
-            </a>
+            </Link>
           </div>
           <div className="p-4 border-b border-gray-700">
             <h3 className="text-lg font-semibold text-teal-400">System Limitations</h3>
