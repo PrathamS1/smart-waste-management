@@ -34,11 +34,16 @@ A modern web application for optimizing waste collection routes using real-time 
 
 ### Prerequisites
 
-- Node.js (v14 or higher)
-- npm (v6 or higher)
-- Modern web browser
+- **Frontend**
+  - Node.js (v20 or higher)
+  - npm (v10 or higher)
+  - Modern web browser
+- **Backend**
+  - Python 3.11+
+  - [pip](https://pip.pypa.io/en/stable/)
+  - MongoDB (running locally or accessible remotely)
 
-### Installation
+## Frontend Setup
 
 1. Clone the repository:
    ```bash
@@ -57,6 +62,43 @@ A modern web application for optimizing waste collection routes using real-time 
    ```
 
 4. Open your browser and navigate to `http://localhost:5173`
+
+## Backend Setup
+
+1. Navigate to the backend directory:
+   ```bash
+   cd ../backend
+   ```
+
+2. Create and activate a Python virtual environment (if not already created):
+   ```bash
+   python -m venv env
+   # On Windows:
+   .\env\Scripts\activate
+   # On macOS/Linux:
+   source env/bin/activate
+   ```
+
+3. Install backend dependencies:
+   ```bash
+   pip install flask flask-socketio flask-cors pymongo python-dotenv openrouteservice bson
+   ```
+
+4. Ensure MongoDB is running locally or update your configuration in `backend/config/config.py` to point to your MongoDB instance.
+
+5. Create an `.env` file inside the backend direcotory with the following contnents:
+    ```bash
+    MONGO_URI = YOUR_MONGODB_URL
+    MONGO_DB = NAME_OF_DB (ex. smartWaste)
+    ORS = THE_OPENROUTESERVICE_KEY
+    ```
+    Go to OpenRouteService website to get the key.
+6. Start the backend server:
+   ```bash
+   python app.py
+   ```
+
+6. The backend will be available at `http://localhost:5000`
 
 ## 💻 Usage
 
@@ -113,8 +155,11 @@ A modern web application for optimizing waste collection routes using real-time 
 
 - **Backend**
   - Python
-  - FastAPI
+  - Flask (with Flask-SocketIO, Flask-CORS)
+  - PyMongo (MongoDB)
   - OR-Tools for route optimization
+  - OpenRouteService for map routing
+  - python-dotenv for environment variables
 
 ## 📝 API Documentation
 
