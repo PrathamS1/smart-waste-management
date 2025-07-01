@@ -2,7 +2,7 @@
 
 A modern web application for optimizing waste collection routes using real-time bin fill levels and vehicle capacity constraints.
 
-[🌐 View How It Works (Deployed Frontend)](https://smart-waste-management-flame.vercel.app/how-it-works)
+[🌐 View How It Works (Deployed Frontend)](https://smart-waste-management-flame.vercel.app/)
 
 ![Smart Waste Management System](frontend/public/homescreen.jpeg)
 
