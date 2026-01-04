@@ -28,11 +28,11 @@ const BinControlPanel = ({ onAddBins, onSearchCity }) => {
             value={city}
             onChange={(e) => setCity(e.target.value)}
             placeholder="Enter City Name"
-            className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-gray-100 placeholder-gray-400 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 transition-all duration-200"
+            className="w-full px-4 py-3 bg-zinc-700 border border-zinc-600 rounded-lg text-zinc-100 placeholder-zinc-400 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 transition-all duration-200"
           />
           <button 
             type="submit"
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-teal-400 transition-colors duration-200"
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-teal-400 transition-colors duration-200"
           >
             <svg
               className="w-6 h-6"
@@ -52,7 +52,7 @@ const BinControlPanel = ({ onAddBins, onSearchCity }) => {
         </div>
 
         {/* Bin Controls */}
-        <div className="bg-gray-700/50 rounded-lg p-6 space-y-6">
+        <div className="bg-zinc-700/50 rounded-lg p-6 space-y-6">
           <div className="space-y-4">
             <div className="flex gap-4">
               <input
@@ -60,16 +60,16 @@ const BinControlPanel = ({ onAddBins, onSearchCity }) => {
                 min="1"
                 value={count}
                 onChange={(e) => setCount(Number(e.target.value))}
-                className="flex-1 px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-gray-100 placeholder-gray-400 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 transition-all duration-200"
+                className="flex-1 px-4 py-3 bg-zinc-700 border border-zinc-600 rounded-lg text-zinc-100 placeholder-zinc-400 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 transition-all duration-200"
                 placeholder="Number of Bins"
               />
               <select
                 value={fillMode}
                 onChange={(e) => setFillMode(e.target.value)}
-                className="flex-1 px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-gray-100 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 transition-all duration-200"
+                className="flex-1 px-4 py-3 bg-zinc-700 border border-zinc-600 rounded-lg text-zinc-100 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 transition-all duration-200"
               >
-                <option value="auto" className="bg-gray-700">Auto Fill</option>
-                <option value="manual" className="bg-gray-700">Manual Fill</option>
+                <option value="auto" className="bg-zinc-700">Auto Fill</option>
+                <option value="manual" className="bg-zinc-700">Manual Fill</option>
               </select>
             </div>
           </div>

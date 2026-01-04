@@ -13,15 +13,15 @@ const Dashboard = ({ bins, updateBinFill, vehicles }) => {
   const averageVehicleFill = (totalCurrentFill / totalCapacity) * 100 || 0;
 
   return (
-    <div className="bg-gray-800 rounded-xl shadow-2xl p-6">
+    <div className="bg-zinc-800 rounded-xl shadow-2xl p-6">
       <h2 className="text-2xl font-bold text-teal-400 mb-6">System Dashboard</h2>
       
       {/* Statistics Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <div className="bg-gray-700/50 rounded-xl p-4 border border-gray-600">
+        <div className="bg-zinc-700/50 rounded-xl p-4 border border-zinc-600">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-400 text-sm">Total Bins</p>
+              <p className="text-zinc-400 text-sm">Total Bins</p>
               <h3 className="text-2xl font-bold text-white">{totalBins}</h3>
             </div>
             <div className="w-12 h-12 bg-teal-500/20 rounded-lg flex items-center justify-center">
@@ -32,10 +32,10 @@ const Dashboard = ({ bins, updateBinFill, vehicles }) => {
           </div>
         </div>
 
-        <div className="bg-gray-700/50 rounded-xl p-4 border border-gray-600">
+        <div className="bg-zinc-700/50 rounded-xl p-4 border border-zinc-600">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-400 text-sm">Average Fill Level</p>
+              <p className="text-zinc-400 text-sm">Average Fill Level</p>
               <h3 className="text-2xl font-bold text-white">{averageFill.toFixed(1)}%</h3>
             </div>
             <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
@@ -46,10 +46,10 @@ const Dashboard = ({ bins, updateBinFill, vehicles }) => {
           </div>
         </div>
 
-        <div className="bg-gray-700/50 rounded-xl p-4 border border-gray-600">
+        <div className="bg-zinc-700/50 rounded-xl p-4 border border-zinc-600">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-400 text-sm">Bins Needing Collection</p>
+              <p className="text-zinc-400 text-sm">Bins Needing Collection</p>
               <h3 className="text-2xl font-bold text-white">{binsNeedingCollection}</h3>
             </div>
             <div className="w-12 h-12 bg-red-500/20 rounded-lg flex items-center justify-center">
@@ -60,10 +60,10 @@ const Dashboard = ({ bins, updateBinFill, vehicles }) => {
           </div>
         </div>
 
-        <div className="bg-gray-700/50 rounded-xl p-4 border border-gray-600">
+        <div className="bg-zinc-700/50 rounded-xl p-4 border border-zinc-600">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-400 text-sm">Active Vehicles</p>
+              <p className="text-zinc-400 text-sm">Active Vehicles</p>
               <h3 className="text-2xl font-bold text-white">{totalVehicles}</h3>
             </div>
             <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center">
@@ -78,11 +78,11 @@ const Dashboard = ({ bins, updateBinFill, vehicles }) => {
       {/* Bins and Vehicles Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Bins Section */}
-        <div className="bg-gray-700/50 rounded-xl p-6 border border-gray-600">
+        <div className="bg-zinc-700/50 rounded-xl p-6 border border-zinc-600">
           <h3 className="text-xl font-semibold text-teal-400 mb-4">Bin Status</h3>
           <div className="space-y-4 max-h-[400px] overflow-y-auto pr-2">
             {bins.map((bin) => (
-              <div key={bin.id} className="bg-gray-800/50 rounded-lg p-4 border border-gray-600">
+              <div key={bin.id} className="bg-zinc-800/50 rounded-lg p-4 border border-zinc-600">
                 <div className="flex items-center justify-between mb-2">
                   <h4 className="font-medium text-white">Bin {bin.id}</h4>
                   <span className={`px-2 py-1 rounded-full text-xs font-medium ${
@@ -93,7 +93,7 @@ const Dashboard = ({ bins, updateBinFill, vehicles }) => {
                     {bin.fill}% Full
                   </span>
                 </div>
-                <div className="w-full bg-gray-600 rounded-full h-2 mb-2">
+                <div className="w-full bg-zinc-600 rounded-full h-2 mb-2">
                   <div
                     className={`h-2 rounded-full ${
                       bin.fill > 70 ? 'bg-red-500' :
@@ -112,7 +112,7 @@ const Dashboard = ({ bins, updateBinFill, vehicles }) => {
                     onChange={(e) => updateBinFill(bin.id, parseInt(e.target.value))}
                     className="w-full"
                   />
-                  <span className="text-sm text-gray-400">{bin.fill}%</span>
+                  <span className="text-sm text-zinc-400">{bin.fill}%</span>
                 </div>
               </div>
             ))}
@@ -120,26 +120,26 @@ const Dashboard = ({ bins, updateBinFill, vehicles }) => {
         </div>
 
         {/* Vehicles Section */}
-        <div className="bg-gray-700/50 rounded-xl p-6 border border-gray-600">
+        <div className="bg-zinc-700/50 rounded-xl p-6 border border-zinc-600">
           <h3 className="text-xl font-semibold text-teal-400 mb-4">Vehicle Status</h3>
           <div className="space-y-4 max-h-[400px] overflow-y-auto pr-2">
             {vehicles.map((vehicle, index) => (
-              <div key={index} className="bg-gray-800/50 rounded-lg p-4 border border-gray-600">
+              <div key={index} className="bg-zinc-800/50 rounded-lg p-4 border border-zinc-600">
                 <div className="flex items-center justify-between mb-2">
                   <h4 className="font-medium text-white">Vehicle {index + 1}</h4>
-                  <span className="text-sm text-gray-400">{vehicle.license}</span>
+                  <span className="text-sm text-zinc-400">{vehicle.license}</span>
                 </div>
                 <div className="grid grid-cols-2 gap-4 mb-3">
                   <div>
-                    <p className="text-sm text-gray-400">Capacity</p>
+                    <p className="text-sm text-zinc-400">Capacity</p>
                     <p className="text-white font-medium">{vehicle.capacity} units</p>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-400">Current Fill</p>
+                    <p className="text-sm text-zinc-400">Current Fill</p>
                     <p className="text-white font-medium">{vehicle.currentFill} units</p>
                   </div>
                 </div>
-                <div className="w-full bg-gray-600 rounded-full h-2">
+                <div className="w-full bg-zinc-600 rounded-full h-2">
                   <div
                     className="h-2 rounded-full bg-purple-500"
                     style={{ width: `${(vehicle.currentFill / vehicle.capacity) * 100}%` }}

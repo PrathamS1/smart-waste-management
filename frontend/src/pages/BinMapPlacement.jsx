@@ -165,7 +165,7 @@ const BinPlacement = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-100 p-4">
+    <div className="min-h-screen bg-zinc-900 text-zinc-100 p-4">
       <Toaster 
         position="top-right"
         toastOptions={{
@@ -191,8 +191,8 @@ const BinPlacement = () => {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row gap-6">
           {/* Map Section */}
-          <div className="lg:w-[65%] bg-gray-800 rounded-xl shadow-2xl overflow-hidden">
-            <div className="p-4 border-b border-gray-700">
+          <div className="lg:w-[65%] bg-zinc-800 rounded-xl shadow-2xl overflow-hidden">
+            <div className="p-4 border-b border-zinc-700">
               <h2 className="text-2xl font-bold text-teal-400">Smart Waste Collection Map</h2>
             </div>
             <BinMap
@@ -210,14 +210,14 @@ const BinPlacement = () => {
           {/* Control Panel Section */}
           <div className="lg:w-[35%] space-y-6">
             {/* Panel Toggle */}
-            <div className="bg-gray-800 rounded-xl p-4 shadow-2xl">
+            <div className="bg-zinc-800 rounded-xl p-4 shadow-2xl">
               <div className="flex gap-3 justify-center">
                 <button
                   onClick={() => setActivePanel("bins")}
                   className={`px-6 py-3 rounded-lg text-lg font-semibold transition-all duration-200 ${
                     activePanel === "bins"
                       ? "bg-teal-600 text-white shadow-lg shadow-teal-500/30"
-                      : "bg-gray-700 text-gray-300 hover:bg-gray-600"
+                      : "bg-zinc-700 text-zinc-300 hover:bg-zinc-600"
                   }`}
                 >
                   Bins
@@ -227,7 +227,7 @@ const BinPlacement = () => {
                   className={`px-6 py-3 rounded-lg text-lg font-semibold transition-all duration-200 ${
                     activePanel === "vehicles"
                       ? "bg-teal-600 text-white shadow-lg shadow-teal-500/30"
-                      : "bg-gray-700 text-gray-300 hover:bg-gray-600"
+                      : "bg-zinc-700 text-zinc-300 hover:bg-zinc-600"
                   }`}
                 >
                   Vehicles
@@ -236,7 +236,7 @@ const BinPlacement = () => {
             </div>
 
             {/* Control Panel Content */}
-            <div className="bg-gray-800 rounded-xl shadow-2xl overflow-hidden">
+            <div className="bg-zinc-800 rounded-xl shadow-2xl overflow-hidden">
               {activePanel === "bins" ? (
                 <BinControlPanel
                   onAddBins={handleAddBins}
@@ -274,14 +274,14 @@ const BinPlacement = () => {
         <div className="mt-6 flex justify-center gap-4">
           <button
             onClick={handleSimulationClick}
-            className="px-8 py-4 bg-gradient-to-r from-teal-500 to-emerald-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-teal-500/30 transition-all duration-200 hover:scale-105"
+            className="px-8 py-4 bg-gradient-to-r from-zinc-900 to-zinc-800 border-white border-2 text-white font-semibold rounded-xl shadow-lg hover:shadow-teal-500/30 transition-all duration-200 hover:scale-105"
           >
             Add Data
           </button>
           <button
             onClick={fetchOptimizedRoutes}
             disabled={isSimulating}
-            className={`px-8 py-4 bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-purple-500/30 transition-all duration-200 hover:scale-105 flex items-center gap-2 ${
+            className={`px-8 py-4 bg-gradient-to-r from-zinc-200 to-teal-400 text-zinc-900 font-semibold rounded-xl shadow-lg hover:shadow-zinc-500/30 transition-all duration-200 hover:scale-105 flex items-center gap-2 ${
               isSimulating ? 'opacity-75 cursor-not-allowed' : ''
             }`}
           >

@@ -8,10 +8,10 @@ const BinCards = ({ bins, updateBinFill }) => {
         {bins.map((bin) => (
           <div
             key={bin.id}
-            className="p-4 rounded-lg shadow-md bg-white border border-gray-200"
+            className="p-4 rounded-lg shadow-md bg-white border border-zinc-200"
           >
             <p className="font-semibold mb-2">Bin #{bin.id}</p>
-            <p className="text-sm text-gray-600 mb-2">
+            <p className="text-sm text-zinc-600 mb-2">
               Lat: {bin.lat.toFixed(4)} | Lng: {bin.lng.toFixed(4)}
             </p>
             <input

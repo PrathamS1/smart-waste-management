@@ -42,11 +42,11 @@ const LimitationsModal = () => {
   ];
 
   return (
-    <div className="fixed bottom-4 right-4 z-50">
+    <div className="fixed bottom-4 right-4 z-100">
       {/* Collapsed Button */}
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="bg-gray-800 text-white p-3 rounded-full border-2 border-red-500 shadow-lg hover:bg-red-700 transition-all duration-200 flex items-center gap-2"
+        className="bg-zinc-800 text-white p-3 rounded-full border-2 border-red-500 shadow-lg hover:bg-red-700 transition-all duration-200 flex items-center gap-2"
       >
         <svg
           className={`w-6 h-6 transform transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}
@@ -66,24 +66,24 @@ const LimitationsModal = () => {
 
       {/* Expanded Modal */}
       {isExpanded && (
-        <div className="absolute bottom-16 right-0 w-80 bg-gray-800 rounded-lg shadow-xl border border-gray-700 overflow-hidden">
-          <div className="p-4 border-b border-gray-700 bg-red-100 flex flex-col items-center">
+        <div className="absolute bottom-16 right-0 z-100 w-xl bg-zinc-800 rounded-lg shadow-xl border border-zinc-700 overflow-hidden">
+          <div className="p-4 border-b border-zinc-700 bg-red-100 flex flex-col items-center">
             <Link to="/how-it-works"
               className="bg-red-500 hover:bg-red-600 text-white font-semibold px-4 py-2 rounded shadow transition-colors text-center w-full"
             >
               Server is not deployed so the simulation will not work,<br/>see <span className="underline">How it works</span> to gain insight
             </Link>
           </div>
-          <div className="p-4 border-b border-gray-700">
+          <div className="p-4 border-b border-zinc-700">
             <h3 className="text-lg font-semibold text-teal-400">System Limitations</h3>
           </div>
           <div className="max-h-[60vh] overflow-y-auto">
             {limitations.map((section, index) => (
-              <div key={index} className="p-4 border-b border-gray-700 last:border-b-0">
-                <h4 className="text-sm font-medium text-gray-300 mb-2">{section.title}</h4>
+              <div key={index} className="p-4 border-b border-zinc-700 last:border-b-0">
+                <h4 className="text-sm font-medium text-zinc-300 mb-2">{section.title}</h4>
                 <ul className="space-y-2">
                   {section.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className="flex items-start gap-2 text-sm text-gray-400">
+                    <li key={itemIndex} className="flex items-start gap-2 text-sm text-zinc-400">
                       <svg
                         className="w-4 h-4 text-teal-400 mt-1 flex-shrink-0"
                         fill="none"
